@@ -42,8 +42,11 @@ const server = app.listen(process.env.PORT, () => {
   console.log(`Server started on port ${process.env.PORT}`);
 });
 
-const io = socket(server);
-io.set("origins", "*:*");
+const io = socket(server, {
+  cors: {
+    origin: "*",
+  },
+});
 
 global.onlineUsers = new Map();
 
