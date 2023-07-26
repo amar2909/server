@@ -43,6 +43,7 @@ const server = app.listen(process.env.PORT, () => {
 });
 
 const io = socket(server);
+io.set("origins", "*:*");
 
 global.onlineUsers = new Map();
 
