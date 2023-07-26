@@ -11,15 +11,19 @@ dotenv.config(); // Load environment variables from .env file
 
 const MONGO_CRED = process.env.MONGO_CRED; // Access environment variable
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 // Add options to the CORS middleware
-const corsOptions = {
-  origin: "http://localhost:3000",
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true,
-};
+// const corsOptions = {
+//   origin: "https://backend-f3e6.onrender.com",
+//   methods: ["GET", "POST"],
+//   allowedHeaders: ["Content-Type", "Authorization"],
+//   credentials: true,
+// };
 
 app.use(express.json());
 app.use("/api/auth", cors(corsOptions), userRoutes);

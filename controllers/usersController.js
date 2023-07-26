@@ -42,6 +42,7 @@ module.exports.login = async (req, res, next) => {
   }
 };
 
+// -----------------SEtavatar func-----------------
 module.exports.setAvatar = async (req, res, next) => {
   try {
     const userID = req.params.id;
