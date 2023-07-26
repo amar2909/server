@@ -26,8 +26,8 @@ app.use(
 // };
 
 app.use(express.json());
-app.use("/api/auth", cors(corsOptions), userRoutes);
-app.use("/api/messages", cors(corsOptions), messageRoute);
+app.use("/api/auth", userRoutes);
+app.use("/api/messages", messageRoute);
 
 mongoose
   .connect(MONGO_CRED)
@@ -42,9 +42,7 @@ const server = app.listen(process.env.PORT, () => {
   console.log(`Server started on port ${process.env.PORT}`);
 });
 
-const io = socket(server, {
-  cors: corsOptions, // Pass the same CORS options to socket.io
-});
+const io = socket(server);
 
 global.onlineUsers = new Map();
 
